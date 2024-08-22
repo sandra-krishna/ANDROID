@@ -1,4 +1,4 @@
-package com.example.loginpage;
+package com.example.logout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,16 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.bt2), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
     }
 
-    public void login(View view) {
-        EditText uname=findViewById(R.id.editTextText);
+    public void LOGIN(View view) {
+        EditText uname=findViewById(R.id.ED1);
         EditText pwd=findViewById(R.id.ED2);
         String username=uname.getText().toString();
         String password=pwd.getText().toString();
@@ -40,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         } else if (username.equals(u)&&password.equals(p)) {
             Toast.makeText(MainActivity.this,"login successfull",Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
+            intent.putExtra("user_name", u);
             startActivity(intent);
 
         }
@@ -48,4 +48,4 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
-    }
+}
